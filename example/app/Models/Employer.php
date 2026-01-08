@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Employer extends Model
 {
-     use HasFactory;
+    use HasFactory;
+
+    public function jobs()
+    {
+        return $this->hasMany(Job::class);
+    }
 }
