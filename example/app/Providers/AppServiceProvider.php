@@ -22,5 +22,8 @@ class AppServiceProvider extends ServiceProvider
     {
         // Prevent lazy loading in Eloquent models
         Model::preventLazyLoading();
+
+        // Use Bootstrap 5 for pagination views
+        //        Paginator::useBootstrapFive();
     }
 }
