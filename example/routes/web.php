@@ -21,7 +21,10 @@ Route::get('/jobs/create', function () {
 });
 
 Route::post('/jobs', function () {
-    // validation...
+    request()->validate([
+        'title' => ['required', 'min:3'],
+        'salary' => ['required']
+    ]);
 
     Job::create([
         'title' => request('title'),
@@ -32,13 +35,12 @@ Route::post('/jobs', function () {
     return redirect('/jobs');
 });
 
-// wildcard route parameter should be defined at the end to avoid conflicts
+// wildcard route parameter should be at the end to avoid conflicts
 Route::get('/jobs/{id}', function ($id) {
     $job = Job::find($id);
 
     return view('jobs.show', ['job' => $job]);
 });
-
 
 
 Route::get('/contact', function () {
