@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Providers;
+use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -19,6 +20,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // Prevent lazy loading in Eloquent models
+        Model::preventLazyLoading();
     }
 }
